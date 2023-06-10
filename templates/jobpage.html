@@ -13,22 +13,31 @@
       <p class="lead mt-0">{{job.location}}</p>
       <h4>Responsibilities</h4>
       <ul>
-        {% for line in job.responsibilities.strip().split(".") %}
-          {% if line.strip() != "" %}
-            <li>{{line}}</li>
-          {% endif %}
-        {% endfor %}
+        {% if job.responsibilities != None %}
+          {% for line in job.responsibilities.strip().split(".") %}
+            {% if line.strip() != "" %}
+              <li>{{line}}</li>
+            {% endif %}
+          {% endfor %}
+        {% else %}
+          {{job.responsibilities}}
+        {% endif %}      
       </ul>
       <h4>Requirements</h4>
       <ol>
-        {% for line in job.requirements.strip().split(".") %}
-          {% if line.strip() != "" %}
-            <li>{{line}}</li>
-          {% endif %}
-        {% endfor %}
+        {% if job.requirements != None %}
+          {% for line in job.requirements.strip().split(".") %}
+            {% if line.strip() != "" %}
+              <li>{{line}}</li>
+            {% endif %}
+          {% endfor %}
+        {% else %}
+          {{job.requirements}}
+        {% endif %}
       </ol>
       <h4>Salary</h4>
       <p>{{job.currency}}{{job.location}}</p>
+      {% include 'application_form.html' %}
     </div>
       {% include 'footer.html' %}
   </body>
